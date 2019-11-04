@@ -10,11 +10,13 @@
 // 移动端iOS系统数据库之Realm(二)表的创建增删改查  https://www.jianshu.com/p/48910e88e8a1
 // 官方文档 https://realm.io/cn/docs/swift/latest/
 
+// Realm的坑：不自动删除关联的子表
+
 import Foundation
 import RealmSwift
 
 
-final class SSKDatabase {
+public final class SSKDatabase {
     
     private init() {}
     
@@ -31,11 +33,11 @@ final class SSKDatabase {
     fileprivate  var shareConfig: Realm.Configuration!
 
     
-    func realmConfigure(_ schemaVersion: UInt64 = 0, migrationBlock: MigrationBlock?) {
+    public func realmConfigure(_ schemaVersion: UInt64 = 0, migrationBlock: MigrationBlock?) {
         
         do {
 
-             let config = SSKRealmConfiguration.sharedConfiguration(schemaVersion, migrationBlock: migrationBlock)
+            let config = SSKRealmConfiguration.sharedConfiguration(schemaVersion, migrationBlock: migrationBlock)
             shareConfig = config
              self.sharedRealm = try Realm(configuration: config)
         } catch let error {
@@ -47,7 +49,7 @@ final class SSKDatabase {
     }
     
     // 删除数据库文件
-    func deleteRealm() {
+    public func deleteRealm() {
         
         if let path = shareConfig.fileURL {
             
@@ -61,7 +63,7 @@ final class SSKDatabase {
     }
     
     ///  清空整个数据库
-    func cleanRealm() {
+    public func cleanRealm() {
         self.sharedRealm.deleteAll()
     }
     
@@ -111,7 +113,7 @@ struct SSKRealmConfiguration {
     // https://www.jianshu.com/p/e7b467620379
 }
 
-extension SSKDatabase {
+public extension SSKDatabase {
     
     func add(_ data: Object) {
         try! sharedRealm.write {
@@ -128,7 +130,7 @@ extension SSKDatabase {
         }
     }
     
-    // 直接更新一个对象的属性
+    /// 直接更新一个对象的属性
     func update(_ block: (() -> Void)) {
         try! sharedRealm.write {
             block()
@@ -225,27 +227,22 @@ extension SSKDatabase {
         return nil
     }
     
-    func object<T: Object>(primaryKeyValue: String, type: T.Type) -> T?  {
-    
-    
-//        if let primaryKey = type.primaryKey() {
-//            let predicate = NSPredicate(format: "name = \(primaryKeyValue)")
-//            return sharedRealm.objects(type).filter(predicate).first
-//        }
-        
-        return nil
+    /// 存储的对象必须重写 primaryKey()
+    func object<Element: Object>(primaryKey: String, type: Element.Type) -> Element?  {
+        return sharedRealm.object(ofType: type, forPrimaryKey: primaryKey)
     }
    
 
 }
 
 
-extension Object {
+public extension Object {
     
     class func object(for primaryKeyValue: String) {
         
     }
     
+     /// 直接更新一个对象的属性
     func update(_ block: (() -> Void)) {
         
  

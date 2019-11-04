@@ -105,7 +105,7 @@ class ViewController: UIViewController {
 }
 
 
-final class SSKUserInfo: Object {
+final class SSKUserInfo: Object, Codable {
     
     @objc dynamic var id: String = ""
     
