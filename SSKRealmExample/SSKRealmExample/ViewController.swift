@@ -24,17 +24,25 @@ class ViewController: UIViewController {
 
     @IBAction func saveItemAction(_ sender: UIButton) {
         
-        let user = SSKUserInfo()
-        user.id = "980927"
-        user.name = "toom"
-        user.age = 34
+//        let user = SSKUserInfo()
+//        user.id = "980927"
+//        user.name = "toom"
+//        user.age = 34
+//
+//        let annie = SSKUserInfo()
+//        annie.id = "980933"
+//        annie.name = "annie"
+//        annie.age = 42
+//
+//        SSKDatabase.shared.update(user)
         
-        let annie = SSKUserInfo()
-        annie.id = "980933"
-        annie.name = "annie"
-        annie.age = 42
         
-        SSKDatabase.shared.update(user)
+       
+        let user = SSKDatabase.shared.object(primaryKey: "980933",
+                                             type: SSKUserInfo.self)
+
+        print(user!.name)
+        
        // SSKDatabase.shared.update(user)
         //SSKDatabase.shared.update(SSKUserInfo.self, data: user)
 //

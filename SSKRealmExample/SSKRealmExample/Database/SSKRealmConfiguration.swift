@@ -115,12 +115,14 @@ struct SSKRealmConfiguration {
 
 public extension SSKDatabase {
     
-    func add(_ data: Object) {
+    /// 添加或更新一个对象
+    func addOrUpdate(_ data: Object) {
         try! sharedRealm.write {
-            // 和 （func update(_ data: Object)） 等价
             sharedRealm.add(data, update: Realm.UpdatePolicy.modified)
         }
     }
+    
+    
     
     // where: 限定元素类型
     /// 批量添加对象
@@ -129,6 +131,8 @@ public extension SSKDatabase {
             sharedRealm.add(objects, update: Realm.UpdatePolicy.modified)
         }
     }
+    
+
     
     /// 直接更新一个对象的属性
     func update(_ block: (() -> Void)) {
@@ -152,18 +156,8 @@ public extension SSKDatabase {
         
     }
     
-    /// 通过主键更新一个对象
-    func update(_ data: Object) {
-        
-        // 主键之外的属性全部更新,如果没有此主键会创建一个新对象(此方法和add等价)
-        try! sharedRealm.write {
-            sharedRealm.add(data, update: Realm.UpdatePolicy.modified)
-            
-        }
-    }
     
-    
-    /// 通过主键更新对称的部分属性
+    /// 通过主键更新对象的部分属性
     
     /**
      
@@ -227,7 +221,7 @@ public extension SSKDatabase {
         return nil
     }
     
-    /// 存储的对象必须重写 primaryKey()
+    /// 根据主键获取对象（获取的对象必须设置主键，否则返回nil）
     func object<Element: Object>(primaryKey: String, type: Element.Type) -> Element?  {
         return sharedRealm.object(ofType: type, forPrimaryKey: primaryKey)
     }
@@ -238,8 +232,8 @@ public extension SSKDatabase {
 
 public extension Object {
     
-    class func object(for primaryKeyValue: String) {
-        
+    class func object(for primaryKey: String) {
+       
     }
     
      /// 直接更新一个对象的属性
