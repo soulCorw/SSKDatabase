@@ -10,6 +10,8 @@
 // 移动端iOS系统数据库之Realm(二)表的创建增删改查  https://www.jianshu.com/p/48910e88e8a1
 // 官方文档 https://realm.io/cn/docs/swift/latest/
 
+// swift https://www.hangge.com/blog/cache/detail_891.html
+
 // Realm的坑：不自动删除关联的子表
 
 import Foundation
