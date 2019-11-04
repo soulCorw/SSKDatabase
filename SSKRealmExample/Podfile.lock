@@ -1,0 +1,53 @@
+PODS:
+  - BulletinBoard (4.1.0)
+  - DynamicColor (4.2.0)
+  - Realm (3.19.0):
+    - Realm/Headers (= 3.19.0)
+  - Realm/Headers (3.19.0)
+  - RealmSwift (3.19.0):
+    - Realm (= 3.19.0)
+  - Siren (5.2.3)
+  - SnapKit (5.0.1)
+  - SPPermission/Camera (4.0.6):
+    - SPPermission/Core
+  - SPPermission/Core (4.0.6)
+  - SPPermission/Location (4.0.6):
+    - SPPermission/Core
+  - SPPermission/Microphone (4.0.6):
+    - SPPermission/Core
+  - SPPermission/Notification (4.0.6):
+    - SPPermission/Core
+
+DEPENDENCIES:
+  - BulletinBoard
+  - DynamicColor (~> 4.2.0)
+  - RealmSwift
+  - Siren
+  - SnapKit (~> 5.0.0)
+  - SPPermission/Camera
+  - SPPermission/Location
+  - SPPermission/Microphone
+  - SPPermission/Notification
+
+SPEC REPOS:
+  trunk:
+    - BulletinBoard
+    - DynamicColor
+    - Realm
+    - RealmSwift
+    - Siren
+    - SnapKit
+    - SPPermission
+
+SPEC CHECKSUMS:
+  BulletinBoard: c774340545b5cfd05a96a89f63b105ecc95c86f9
+  DynamicColor: c475f66bda1cabf602f2c54ac1171c0c07148a5a
+  Realm: 995d585bcf699aaff226715886c849a29dd3d07f
+  RealmSwift: 35f284a537989f2187b413e5917091948cb87a3f
+  Siren: 996f37869eae1f343f8c11f17d90c9c8da90bd4c
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  SPPermission: 1807bce0f1d8cf4bb0185a46d3acfaf5a6cff2d8
+
+PODFILE CHECKSUM: f0df54deb84b9fb377477d0c1a6e0e67a2f22f8f
+
+COCOAPODS: 1.8.3

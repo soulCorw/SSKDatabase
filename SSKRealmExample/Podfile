@@ -1,0 +1,29 @@
+platform :ios, '11.0'
+
+target 'SSKRealmExample' do
+    
+use_frameworks!
+
+
+    # UI
+    pod 'SnapKit', '~> 5.0.0'
+
+    # Database
+    pod 'RealmSwift'
+
+
+    pod 'BulletinBoard'
+    
+    pod 'SPPermission/Notification'
+    pod 'SPPermission/Camera'
+    pod 'SPPermission/Location'
+    pod 'SPPermission/Microphone'
+    
+    
+    pod 'DynamicColor', '~> 4.2.0'
+    
+    pod 'Siren'
+
+
+    
+end
