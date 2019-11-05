@@ -1,24 +1,23 @@
 
 Pod::Spec.new do |s|
-    s.name         = 'SSKWebKit'
+    s.name         = 'SSKDatabase'
     s.version      = '1.0.0'
-    s.summary      = 'SSKWebkit'
-    s.homepage     = 'https://github.com/soulCorw/SSKWebKit'
+    s.summary      = 'SSKDatabase'
+    s.homepage     = 'https://github.com/soulCorw/SSKDatabase'
     s.license      = 'Apache-2.0'
-    s.authors      = {'SSKWebKit iOS' => 'git@github.com:soulCorw'}
+    s.authors      = {'SSKDatabase iOS' => 'git@github.com:soulCorw'}
     s.platform     = :ios, '10.0'
-    s.source       = {:git => 'git@github.com:soulCorw/SSKWebKit.git', :tag => s.version}
+    s.source       = {:git => 'git@github.com:soulCorw/SSKDatabase.git', :tag => s.version}
 
 
 
-    s.source_files = 'SSKWebKit/SSKWebKit/Sources/*.swift'
-    s.resource     = 'SSKWebKit/SSKWebKit/Sources/SSKWebKit.bundle'
+    s.source_files = 'SSKRealmExample/SSKRealmExample/Database/*.swift'
+
     
 
 
-    s.dependency 'SnapKit', '~> 5.0.0'
-    s.dependency 'WebViewJavascriptBridge', '~> 6.0'
-    s.dependency 'SwiftyJSON'
+    s.dependency 'RealmSwift'
+
     
     
     
