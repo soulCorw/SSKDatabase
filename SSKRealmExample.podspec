@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
 
 
 
-    s.source_files = 'SSKWebKit/SSKWebKit/Sources/*.swift'
+    s.source_files = 'SSKRealmExample/SSKRealmExample/Database/*.swift'
 
     
 
