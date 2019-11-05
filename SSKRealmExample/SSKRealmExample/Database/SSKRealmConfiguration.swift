@@ -117,7 +117,7 @@ struct SSKRealmConfiguration {
 
 public extension SSKDatabase {
     
-    /// 添加或更新一个对象
+    /// 添加或更新一个对象，如果是更新，必须有主键
     func addOrUpdate(_ data: Object) {
         try! sharedRealm.write {
             sharedRealm.add(data, update: Realm.UpdatePolicy.modified)
